@@ -19,6 +19,7 @@ resource "azuredevops_build_definition" "build" {
   ci_trigger {
     use_yaml = true
   }
+}
 
 provider "azuredevops" {
   org_service_url       = "https://dev.azure.com/Intelion-UK"
