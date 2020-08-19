@@ -16,6 +16,7 @@ steps:
     terraformVersion: '0.13.0'
 
 - task: TerraformTaskV1@0
+  name: 'Init'
   inputs:
     provider: 'azurerm'
     command: 'init'
@@ -26,9 +27,19 @@ steps:
     backendAzureRmKey: 'azuredevopsbootstrap'
 
 - task: TerraformTaskV1@0
+  name: 'Plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    environmentServiceNameAzureRM: 'PAYG Dev Test'
+  env:
+    AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
+
+- task: TerraformTaskV1@0
+  name: 'Apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
     environmentServiceNameAzureRM: 'PAYG Dev Test'
   env:
     AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
