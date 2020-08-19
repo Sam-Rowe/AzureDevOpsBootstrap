@@ -3,6 +3,10 @@ resource "azuredevops_project" "test" {
   description  = "Project Description"
 }
 
+provider "azuredevops" {
+  org_service_url       = "https://dev.azure.com/Intelion-UK"
+}
+
 terraform {
   backend "azurerm" {
   }
@@ -15,7 +19,6 @@ terraform {
       # backward compatibility for commonly-used providers, but recommended for
       # explicitness.
       source                = "terraform-providers/azuredevops"
-      org_service_url       = "https://dev.azure.com/Intelion-UK"
     }
   }
 }
