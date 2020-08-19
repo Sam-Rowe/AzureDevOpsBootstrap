@@ -24,3 +24,9 @@ steps:
     backendAzureRmStorageAccountName: 'stinteliontf'
     backendAzureRmContainerName: 'terraformstate'
     backendAzureRmKey: 'azuredevopsbootstrap'
+
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'PAYG Dev Test'
