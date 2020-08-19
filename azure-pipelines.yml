@@ -15,4 +15,12 @@ steps:
   inputs:
     terraformVersion: '0.13.0'
 
-
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'PAYG Dev Test'
+    backendAzureRmResourceGroupName: 'rg-coreinfrastructure-prod'
+    backendAzureRmStorageAccountName: 'stinteliontf'
+    backendAzureRmContainerName: 'terraformstate'
+    backendAzureRmKey: 'azuredevopsbootstrap'
