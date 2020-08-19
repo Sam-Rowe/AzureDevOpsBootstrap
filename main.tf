@@ -52,7 +52,7 @@ terraform {
 
 # Admin user
 resource "azuredevops_user_entitlement" "admin" {
-  principal_name = "foo@contoso.com"
+  principal_name = "sarowe@microsoft.com"
 }
 
 data "azuredevops_group" "group" {
