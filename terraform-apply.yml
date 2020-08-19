@@ -43,3 +43,6 @@ steps:
     environmentServiceNameAzureRM: 'PAYG Dev Test'
   env:
     AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
+    TF_VAR_subscription_id: $(subscription_id)
+    TF_VAR_subscription_name: $(subscription_name)
+    TF_VAR_tennant_id: $(tennant_id)

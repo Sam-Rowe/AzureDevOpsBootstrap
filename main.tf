@@ -66,3 +66,12 @@ resource "azuredevops_group_membership" "membership" {
     azuredevops_user_entitlement.admin.descriptor
   ]
 }
+
+# Requires secret variables setup on the pipeline, I don't have authorisation to test
+resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
+  project_id                = azuredevops_project.test.id
+  service_endpoint_name     = "AzureRM"
+  azurerm_spn_tenantid      = var.tenant_id
+  azurerm_subscription_id   = var.subscription_id
+  azurerm_subscription_name = var.subscription_name
+}
