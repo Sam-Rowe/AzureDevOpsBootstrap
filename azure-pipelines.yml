@@ -10,3 +10,9 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'drop'
     publishLocation: 'pipeline'
+
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '0.13.0'
+
+
