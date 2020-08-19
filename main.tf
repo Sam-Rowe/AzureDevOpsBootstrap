@@ -1,8 +1,15 @@
 resource "azuredevops_project" "test" {
-  project_name = "Terraform"
-  description  = "Project Description"
-}
+  project_name       = "Test Project"
+  description        = "Test Project Description"
+  visibility         = "private"
+  version_control    = "Git"
+  work_item_template = "Agile"
 
+  features = {
+      "testplans" = "disabled"
+      "artifacts" = "disabled"
+  }
+}
 provider "azuredevops" {
   org_service_url       = "https://dev.azure.com/Intelion-UK"
 }
