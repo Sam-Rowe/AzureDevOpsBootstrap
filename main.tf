@@ -19,7 +19,7 @@ resource "azuredevops_git_repository" "repo" {
   }
 }
 
-resource "azuredevops_build_definition" "build" {
+/* resource "azuredevops_build_definition" "build" {
   project_id = azuredevops_project.test.id
   name       = "Hello World"
   path       = "\\myfirstpipeline"
@@ -34,7 +34,7 @@ resource "azuredevops_build_definition" "build" {
     branch_name = "master"
     yml_path    = "example-pipelines/hello-world.yml"
   }
-}
+} */
 
 provider "azuredevops" {
   org_service_url       = "https://dev.azure.com/Intelion-UK"
