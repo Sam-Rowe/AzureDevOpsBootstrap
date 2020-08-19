@@ -11,13 +11,28 @@ resource "azuredevops_project" "test" {
   }
 }
 
+resource "azuredevops_git_repository" "repo" {
+  project_id = azuredevops_project.test.id
+  name       = "Sample Empty Git Repository"
+  initialization {
+    init_type = "Clean"
+  }
+}
+
 resource "azuredevops_build_definition" "build" {
   project_id = azuredevops_project.test.id
   name       = "Hello World"
-  path       = "//example-pipelines/hello-world.yml"
+  path       = "\\myfirstpipeline"
 
   ci_trigger {
     use_yaml = true
+  }
+
+  repository {
+    repo_type   = "Github"
+    repo_id     = "liamfoneill/AzureDevOpsBootstrap"
+    branch_name = "master"
+    yml_path    = "example-pipelines/hello-world.yml"
   }
 }
 
