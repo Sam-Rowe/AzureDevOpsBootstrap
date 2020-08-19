@@ -49,3 +49,20 @@ terraform {
     }
   }
 }
+
+# Admin user
+resource "azuredevops_user_entitlement" "admin" {
+  principal_name = "foo@contoso.com"
+}
+
+data "azuredevops_group" "group" {
+  project_id = azuredevops_project.test.id
+  name       = "Project Administrators"
+}
+
+resource "azuredevops_group_membership" "membership" {
+  group = data.azuredevops_group.group.descriptor
+  members = [
+    azuredevops_user_entitlement.admin.descriptor
+  ]
+}
