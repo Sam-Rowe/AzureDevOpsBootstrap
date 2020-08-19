@@ -29,7 +29,7 @@ resource "azuredevops_build_definition" "build" {
   }
 
   repository {
-    repo_type   = "Github"
+    repo_type   = "GitHub"
     repo_id     = "liamfoneill/AzureDevOpsBootstrap"
     branch_name = "master"
     yml_path    = "example-pipelines/hello-world.yml"
