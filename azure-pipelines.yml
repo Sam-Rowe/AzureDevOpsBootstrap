@@ -30,4 +30,5 @@ steps:
     provider: 'azurerm'
     command: 'plan'
     environmentServiceNameAzureRM: 'PAYG Dev Test'
-    commandOptions: -var personal_access_token=$(AZDO_PERSONAL_ACCESS_TOKEN)
+  env:
+    AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
