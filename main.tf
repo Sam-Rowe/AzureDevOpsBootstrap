@@ -1,5 +1,6 @@
 provider "azuredevops" {
   version = ">= 0.0.1"
+  source = "terraform-providers/azuredevops"
   org_service_url = "https://dev.azure.com/Intelion-UK"
   personal_access_token = "AZDO_PERSONAL_ACCESS_TOKEN"
 }
