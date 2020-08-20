@@ -1,11 +1,11 @@
 variable "subscription_id" {
-    type = "string"
+    type = string
 }
 
 variable "tenant_id" {
-    type = "string"
+    type = string
 }
 
 variable "subscription_name" {
-    type = "string"
+    type = string
 }
