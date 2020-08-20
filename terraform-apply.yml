@@ -34,6 +34,9 @@ steps:
     environmentServiceNameAzureRM: 'PAYG Dev Test'
   env:
     AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
+    TF_VAR_subscription_id: $(SUBSCRIPTION_ID)
+    TF_VAR_subscription_name: $(SUBSCRIPTION_NAME)
+    TF_VAR_tenant_id: $(TENANT_ID)
 
 - task: TerraformTaskV1@0
   name: 'Apply'
