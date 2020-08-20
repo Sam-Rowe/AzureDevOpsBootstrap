@@ -37,6 +37,7 @@ steps:
     TF_VAR_subscription_id: $(SUBSCRIPTION_ID)
     TF_VAR_subscription_name: $(SUBSCRIPTION_NAME)
     TF_VAR_tenant_id: $(TENANT_ID)
+    TF_VAR_project_admin_user_email: $(project_admin_user_email)
 
 - task: TerraformTaskV1@0
   name: 'Apply'
@@ -49,3 +50,4 @@ steps:
     TF_VAR_subscription_id: $(SUBSCRIPTION_ID)
     TF_VAR_subscription_name: $(SUBSCRIPTION_NAME)
     TF_VAR_tenant_id: $(TENANT_ID)
+    TF_VAR_project_admin_user_email: $(project_admin_user_email)
