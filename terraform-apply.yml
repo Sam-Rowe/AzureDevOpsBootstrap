@@ -4,6 +4,11 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+parameters:
+- name: destroy
+  default: false
+  type: boolean
+
 steps:
 - task: PublishPipelineArtifact@1
   inputs:
@@ -41,9 +46,24 @@ steps:
 
 - task: TerraformTaskV1@0
   name: 'Apply'
+  condition: eq('${{ parameters.destroy }}', false)
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    environmentServiceNameAzureRM: 'PAYG Dev Test'
+  env:
+    AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
+    TF_VAR_subscription_id: $(SUBSCRIPTION_ID)
+    TF_VAR_subscription_name: $(SUBSCRIPTION_NAME)
+    TF_VAR_tenant_id: $(TENANT_ID)
+    TF_VAR_project_admin_user_email: $(project_admin_user_email)
+
+- task: TerraformTaskV1@0
+  name: 'Destroy'
+  condition: eq('${{ parameters.destroy }}', true)
+  inputs:
+    provider: 'azurerm'
+    command: 'destroy'
     environmentServiceNameAzureRM: 'PAYG Dev Test'
   env:
     AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
