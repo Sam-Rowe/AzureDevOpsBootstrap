@@ -59,7 +59,7 @@ resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
 }
 
 resource "azuredevops_build_definition" "build" {
-  project_id = azuredevops_project.project.id
+  project_id = azuredevops_project.test.id
   name       = "Sample Build Definition"
   path       = "\\example-pipelines\\hello-world.yml"
 
