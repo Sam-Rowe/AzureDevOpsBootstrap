@@ -40,10 +40,10 @@ steps:
     TF_VAR_project_admin_user_email: $(project_admin_user_email)
 
 - task: TerraformTaskV1@0
-  name: $(terraform_command)
+  name: '$(terraform_command)'
   inputs:
     provider: 'azurerm'
-    command: $(terraform_command)
+    command: '$(terraform_command)'
     environmentServiceNameAzureRM: 'PAYG Dev Test'
   env:
     AZDO_PERSONAL_ACCESS_TOKEN: $(AZDO_PERSONAL_ACCESS_TOKEN)
