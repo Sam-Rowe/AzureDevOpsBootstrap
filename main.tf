@@ -58,7 +58,7 @@ resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
   azurerm_subscription_name = var.subscription_name
 }
 
-resource "azuredevops_build_definition" "build" {
+/* resource "azuredevops_build_definition" "build" {
   project_id = azuredevops_project.test.id
   name       = "Sample Build Definition"
   path       = "\\terraform-example"
@@ -85,4 +85,4 @@ resource "azuredevops_build_definition" "build" {
     secret_value     = "ZGV2cw"
     is_secret = true
   }
-}
+} */
