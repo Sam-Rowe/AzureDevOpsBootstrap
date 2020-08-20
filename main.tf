@@ -69,6 +69,7 @@ resource "azuredevops_build_definition" "build" {
 
   repository {
     repo_type   = "GitHub"
+    service_connection_id = "Azure DevOps Platform"
     repo_id     = "liamfoneill/AzureDevOpsBootstrap"
     branch_name = "master"
     yml_path    = "hello-world.yml"
