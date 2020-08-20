@@ -61,7 +61,7 @@ resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
 resource "azuredevops_build_definition" "build" {
   project_id = azuredevops_project.test.id
   name       = "Sample Build Definition"
-  path       = "\\example-pipelines\\hello-world.yml"
+  path       = "\\terraform-example"
 
   ci_trigger {
     use_yaml = true
@@ -69,9 +69,9 @@ resource "azuredevops_build_definition" "build" {
 
   repository {
     repo_type   = "TfsGit"
-    repo_id     = azuredevops_git_repository.repo.id
-    branch_name = azuredevops_git_repository.repo.default_branch
-    yml_path    = "azure-pipelines.yml"
+    repo_id     = "liamfoneill/AzureDevOpsBootstrap"
+    branch_name = "master"
+    yml_path    = "hello-world.yml"
   }
 
   variable {
