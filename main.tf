@@ -30,9 +30,7 @@ resource "azuredevops_git_repository" "repo" {
   project_id = azuredevops_project.test.id
   name       = "Sample Empty Git Repository"
   initialization {
-    init_type = "Import"
-    source_type = "Git"
-    source_url = "https://github.com/liamfoneill/AzureDevOpsBootstrap"
+    init_type = "Uninitialized"
   }
 }
 
@@ -58,4 +56,32 @@ resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
   azurerm_spn_tenantid      = var.tenant_id
   azurerm_subscription_id   = var.subscription_id
   azurerm_subscription_name = var.subscription_name
+}
+
+resource "azuredevops_build_definition" "build" {
+  project_id = azuredevops_project.project.id
+  name       = "Sample Build Definition"
+  path       = "\\example-pipelines\\hello-world.yml"
+
+  ci_trigger {
+    use_yaml = true
+  }
+
+  repository {
+    repo_type   = "TfsGit"
+    repo_id     = azuredevops_git_repository.repo.id
+    branch_name = azuredevops_git_repository.repo.default_branch
+    yml_path    = "azure-pipelines.yml"
+  }
+
+  variable {
+    name  = "PipelineVariable"
+    value = "Go Microsoft!"
+  }
+
+  variable {
+    name      = "PipelineSecret"
+    secret_value     = "ZGV2cw"
+    is_secret = true
+  }
 }
