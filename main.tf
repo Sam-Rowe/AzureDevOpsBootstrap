@@ -68,7 +68,7 @@ resource "azuredevops_build_definition" "build" {
   }
 
   repository {
-    repo_type   = "TfsGit"
+    repo_type   = "GitHub"
     repo_id     = "liamfoneill/AzureDevOpsBootstrap"
     branch_name = "master"
     yml_path    = "hello-world.yml"
