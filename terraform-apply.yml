@@ -44,6 +44,7 @@ steps:
     TF_VAR_tenant_id: $(TENANT_ID)
     TF_VAR_project_admin_user_email: $(project_admin_user_email)
     TF_VAR_project_name: $(project_name)
+    TF_VAR_repo_name: $(repo_name)
 
 - task: TerraformTaskV1@0
   name: 'Apply'
@@ -73,3 +74,4 @@ steps:
     TF_VAR_tenant_id: $(TENANT_ID)
     TF_VAR_project_admin_user_email: $(project_admin_user_email)
     TF_VAR_project_name: $(project_name)
+    TF_VAR_repo_name: $(repo_name)
