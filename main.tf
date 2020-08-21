@@ -14,11 +14,11 @@ terraform {
 
 
 resource "azuredevops_project" "test" {
-  project_name       = "Test Project"
-  description        = "Test Project Description"
+  project_name       = var.project_name
+  description        = var.project_description
   visibility         = "private"
-  version_control    = "Git"
-  work_item_template = "Agile"
+  version_control    = var.version_control
+  work_item_template = var.work_item_template
 
   features = {
       "testplans" = "disabled"
@@ -28,7 +28,7 @@ resource "azuredevops_project" "test" {
 
 resource "azuredevops_git_repository" "repo" {
   project_id = azuredevops_project.test.id
-  name       = "Sample Empty Git Repository"
+  name       = var.repo_name
   initialization {
     init_type = "Uninitialized"
   }
